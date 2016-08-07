@@ -51,11 +51,7 @@ app.post('/webhook', (req, res) => {
     // https://developers.facebook.com/docs/messenger-platform/webhook-reference
     const data = req.body;
     
-    console.log( "req = ", req );
-
     if (data.object === 'page') {
-        fbMessaging.sendMessage( data.entry.messaging.sender.id, 'hello' );
-        /*
         data.entry.forEach(entry => {
             entry.messaging.forEach(event => {
                 if (event.message) {
@@ -65,6 +61,7 @@ app.post('/webhook', (req, res) => {
 
                     // We retrieve the user's current session, or create one if it doesn't exist
                     // This is needed for our bot to figure out the conversation history
+                    /*
                     const sessionId = findOrCreateSession(sender);
                     sessions[sessionId].context.coords = {
                         lat: 12.8409194,
@@ -72,19 +69,23 @@ app.post('/webhook', (req, res) => {
                         //    lat: event.message.attachments[0].payload.coordinates.lat,
                         //   lon: event.message.attachments[0].payload.coordinates.long
                     };
+                    */
                     // We retrieve the message content
                     const {text, attachments} = event.message;
 
                     if (attachments) {
                         // We received an attachment
                         // Let's reply with an automatic message
-                        fbmsg.sendMessagePromise(sender, 'Sorry I can only process text messages for now.')
+                        fbMessaging.sendMessagePromise(sender, 'Sorry I can only process text messages for now.')
                         .catch(console.error);
                     } else if (text) {
                         // We received a text message
-
+                        fbMessaging.sendMessagePromise(sender, 'Hello there!')
+                        .catch(console.error);
+                        
                         // Let's forward the message to the Wit.ai Bot Engine
                         // This will run all actions until our bot has nothing left to do
+                        /*
                         wit.runActions(
                             sessionId, // the user's current session
                             text, // the user's message
@@ -107,13 +108,13 @@ app.post('/webhook', (req, res) => {
                         .catch((err) => {
                             console.error('Oops! Got an error from Wit: ', err.stack || err);
                         })
+                        */
                     }
                 } else {
                     console.log('received event', JSON.stringify(event));
                 }
             });
         });
-        */
     }
     res.sendStatus(200);
 });
