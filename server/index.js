@@ -4,7 +4,7 @@ var request     = require( 'request' );
 var fetch       = require( 'node-fetch' );
 var fbAuth      = require( './fb/fb-auth' );
 var fbMessaging = require( './fb/fb-messaging' );
-/*
+
 // Once sanity checks are complete, we start the server
 var app = express();
 app.set( 'port', process.env.PORT || 3000 );
@@ -56,7 +56,7 @@ app.post('/webhook', (req, res) => {
         data.entry.forEach(entry => {
             entry.messaging.forEach(event => {
                 // We retrieve the Facebook user ID of the sender
-                const sender = event.sender.id;
+                var sender = event.sender.id;
                 if (event.message) {
                     console.log( 'step 1...' );
                     // We retrieve the user's current session, or create one if it doesn't exist
@@ -71,7 +71,7 @@ app.post('/webhook', (req, res) => {
                     };
                     */
                     // We retrieve the message content
-/*                    const {text, attachments} = event.message;
+                    const {text, attachments} = event.message;
 
                     if (attachments) {
                         // We received an attachment
@@ -109,7 +109,7 @@ app.post('/webhook', (req, res) => {
                             console.error('Oops! Got an error from Wit: ', err.stack || err);
                         })
                         */
-                    /*}
+                    }
                 } else if( event.postback ) {
                     // check if persistent menu item is selected
                     if( event.postback.payload ) {
@@ -125,4 +125,4 @@ app.post('/webhook', (req, res) => {
         });
     }
     res.sendStatus(200);
-});*/
+});
