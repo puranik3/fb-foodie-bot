@@ -1,10 +1,10 @@
 {
-  "name": "hello-fb",
+  "name": "fb-foodie-bot",
   "version": "1.0.0",
-  "description": "App that is the bot for Prashanth Puranik'k Foodie page",
+  "description": "App that is the bot for Prashanth Puranik's Foodie page",
   "main": "index.js",
   "scripts": {
-    "start": "node ./index.js",
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
