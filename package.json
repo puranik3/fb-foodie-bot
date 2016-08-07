@@ -4,7 +4,12 @@
   "description": "App that is the bot for Prashanth Puranik'k Foodie page",
   "main": "index.js",
   "scripts": {
+    "start": "node ./index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "~6.1.0",
+    "npm": "~3.8.6"
   },
   "repository": {
     "type": "git",
