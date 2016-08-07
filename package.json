@@ -1,0 +1,27 @@
+{
+  "name": "hello-fb",
+  "version": "1.0.0",
+  "description": "App that is the bot for Prashanth Puranik'k Foodie page",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/puranik3/fb-foodie-bot.git"
+  },
+  "keywords": [
+    "facebook",
+    "messenger",
+    "food",
+    "discovery",
+    "search",
+    "zomato"
+  ],
+  "author": "Prashanth Puranik",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/puranik3/fb-foodie-bot/issues"
+  },
+  "homepage": "https://github.com/puranik3/fb-foodie-bot#readme"
+}
