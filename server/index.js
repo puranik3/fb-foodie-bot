@@ -22,6 +22,12 @@ app.listen( app.get( 'port' ), function( err ) {
 
 //app.use(bodyParser.json({ verify: fbAuth.verifyRequestSignature }));
 
+// Process application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({extended: false}))
+
+// Process application/json
+app.use(bodyParser.json())
+
 // Server frontpage
 app.get('/', function (req, res) {
   res.send( 'This is TestBot Server' );
