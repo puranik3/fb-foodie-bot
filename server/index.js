@@ -56,7 +56,7 @@ app.post('/webhook', (req, res) => {
             entry.messaging.forEach(event => {
                 if (event.message) {
                     let sender = event.sender.id;
-                    fbMessaging.sendMessage(sender, 'hi');
+                    fbMessaging.sendMessage(sender, 'hello');
                 }
             });
         });
