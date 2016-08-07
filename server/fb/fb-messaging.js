@@ -49,9 +49,6 @@ module.exports = (function() {
     // See the Send API reference
     // https://developers.facebook.com/docs/messenger-platform/send-api-reference
     const sendMessagePromise = (id, text) => {
-        const FB_PAGE_TOKEN = process.env.PAGE_ACCESS_TOKEN;
-        if (!FB_PAGE_TOKEN) { throw new Error('missing FB_PAGE_TOKEN') }
-
         const body = JSON.stringify({
             recipient: { id },
             message: { text },

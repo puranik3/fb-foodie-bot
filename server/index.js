@@ -110,13 +110,17 @@ app.post('/webhook', (req, res) => {
                         })
                         */
                     }
-                } else if( event.postback ) {
+                } 
+                /*
+                else if( event.postback ) {
                     // check if persistent menu item is selected
                     if( event.postback.payload ) {
                         fbMessaging.sendMessagePromise(sender, event.postback.payload)
                                    .catch(console.error);
                     }
-                } else {
+                }
+                */
+                else {
                     fbMessaging.sendMessagePromise(sender, 'Sorry, I didn\'t get that! Can you rephrase your message?' )
                                .catch(console.error);
                     console.log('received event', JSON.stringify(event));
