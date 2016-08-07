@@ -45,7 +45,7 @@ app.post('/webhook', (req, res) => {
     // https://developers.facebook.com/docs/messenger-platform/webhook-reference
     const data = req.body;
     
-    console.log( "data = ", data );
+    console.log( "req = ", req );
 
     if (data.object === 'page') {
         fbMessaging.sendMessage( data.entry.messaging.sender.id, 'hello' );
