@@ -53,6 +53,7 @@ app.post('/webhook', (req, res) => {
     
     if (data.object === 'page') {
         res.send( 'hjbjh' );
+    } else {
+        res.sendStatus(200);
     }
-    res.sendStatus(200);
 });
