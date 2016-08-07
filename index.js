@@ -5,7 +5,7 @@ var server = http.createServer( function( req, res ) {
 	res.end();
 });
 
-server.listen( 3000, function( err ) {
+server.listen(process.env.port ||  3000, function( err ) {
 	if( err ) {
 		console.log( 'Problem starting server' );
 		return
