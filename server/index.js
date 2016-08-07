@@ -52,7 +52,14 @@ app.post('/webhook', (req, res) => {
     const data = req.body;
     
     if (data.object === 'page') {
-        res.send( 'hjbjh' );
+        data.entry.forEach(entry => {
+            entry.messaging.forEach(event => {
+                if (event.message) {
+                    let sender = event.sender.id;
+                    fbMessaging.sendMessage(sender, 'hi');
+                }
+            });
+        });
     } else {
         res.sendStatus(200);
     }
