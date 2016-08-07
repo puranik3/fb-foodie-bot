@@ -1,18 +1,19 @@
 var request = require( 'request' );
 var fetch   = require( 'node-fetch' );
 
-const { FB_PAGE_TOKEN } = require( './fb-params' );
+const { FB_PAGE_ACCESS_TOKEN, FB_PAGE_TOKEN, PAGE_ACCESS_TOKEN } = require( './fb-params' );
 
 module.exports = (function() {
-    function sendMessage(recipientId, message) {
-        console.log('>>>>>>>>>>>>>>>>>> Sending message to fb');
+    function sendMessage(recipientId, text) {
         request({
             url: 'https://graph.facebook.com/v2.6/me/messages',
-            qs: { access_token: process.env.PAGE_ACCESS_TOKEN },
+            qs: { access_token: FB_PAGE_ACCESS_TOKEN },
             method: 'POST',
             json: {
                 recipient: { id: recipientId },
-                message: message,
+                message: {
+                    text : text
+                }
             }
         }, function (error, response, body) {
             if (error) {
@@ -53,7 +54,7 @@ module.exports = (function() {
             recipient: { id },
             message: { text },
         });
-        const qs = 'access_token=' + encodeURIComponent(FB_PAGE_TOKEN);
+        const qs = 'access_token=' + encodeURIComponent(FB_PAGE_ACCESS_TOKEN);
         return fetch('https://graph.facebook.com/me/messages?' + qs, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -69,9 +70,6 @@ module.exports = (function() {
     };
     
     const sendQuickRepliesTextPromise = (id, question, titles) => {
-       const FB_PAGE_TOKEN = process.env.PAGE_ACCESS_TOKEN;
-       if (!FB_PAGE_TOKEN) { throw new Error('missing FB_PAGE_TOKEN') }
-
        var message = {
            "text": question,
            "quick_replies": []
@@ -95,7 +93,7 @@ module.exports = (function() {
            message: message
        });
 
-       const qs = 'access_token=' + encodeURIComponent(FB_PAGE_TOKEN);
+       const qs = 'access_token=' + encodeURIComponent(FB_PAGE_ACCESS_TOKEN);
        return fetch('https://graph.facebook.com/me/messages?' + qs, {
            method: 'POST',
            headers: { 'Content-Type': 'application/json' },

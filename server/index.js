@@ -60,7 +60,7 @@ app.post('/webhook', (req, res) => {
                     // We retrieve the user's current session, or create one if it doesn't exist
                     // This is needed for our bot to figure out the conversation history
                     // We retrieve the Facebook user ID of the sender
-                    var sender = event.sender.id;
+                    let sender = event.sender.id;
                     /*
                     const sessionId = findOrCreateSession(sender);
                     sessions[sessionId].context.coords = {
@@ -76,12 +76,11 @@ app.post('/webhook', (req, res) => {
                     if (attachments) {
                         // We received an attachment
                         // Let's reply with an automatic message
-                        fbMessaging.sendMessagePromise(sender, 'Sorry I can only process text messages for now.')
+                        fbMessaging.sendMessage(sender, 'Sorry I can only process text messages for now.')
                         .catch(console.error);
                     } else if (text) {
                         // We received a text message
-                        fbMessaging.sendMessagePromise(sender, 'Hello there!')
-                        .catch(console.error);
+                        fbMessaging.sendMessage(sender, 'Hello there!');
                         
                         // Let's forward the message to the Wit.ai Bot Engine
                         // This will run all actions until our bot has nothing left to do
@@ -121,8 +120,8 @@ app.post('/webhook', (req, res) => {
                 }
                 */
                 else {
-                    fbMessaging.sendMessagePromise(sender, 'Sorry, I didn\'t get that! Can you rephrase your message?' )
-                               .catch(console.error);
+                    let sender = event.sender.id;
+                    fbMessaging.sendMessage(sender, 'Sorry, I did not get that! Can you rephrase your message?' );
                     console.log('received event', JSON.stringify(event));
                 }
             });
