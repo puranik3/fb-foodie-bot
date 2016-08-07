@@ -20,20 +20,22 @@ app.listen( app.get( 'port' ), function( err ) {
 	return 0;
 });
 
-app.use(bodyParser.json({ verify: fbAuth.verifyRequestSignature }));
+//app.use(bodyParser.json({ verify: fbAuth.verifyRequestSignature }));
 
 // Server frontpage
 app.get('/', function (req, res) {
   res.send( 'This is TestBot Server' );
 });
 
-// Facebook webhook
+// For webhook verification by FB
 app.get('/webhook', function (req, res) {
-    if (req.query['hub.verify_token'] === 'foodie_app_by_krishna_and_friends') {
-      res.send(req.query['hub.challenge']);
-    } else {
-      res.send('Error, wrong validation token');    
-    }
+    //if (req.query['hub.mode'] === 'subscribe') {
+        if (req.query['hub.verify_token'] === 'foodie_app_by_krishna_and_friends') {
+          res.send(req.query['hub.challenge']);
+        } else {
+          res.send('Error, wrong validation token');    
+        }
+    //}
 });
 
 // Message handler
