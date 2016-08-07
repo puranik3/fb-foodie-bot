@@ -5,11 +5,12 @@ var server = http.createServer( function( req, res ) {
 	res.end();
 });
 
-server.listen(process.env.port ||  3000, function( err ) {
+var port = process.env.port || 3000;
+server.listen( port, function( err ) {
 	if( err ) {
 		console.log( 'Problem starting server' );
 		return
 	}
 	
-	console.log( 'Started server and listening on port 3000' );
+	console.log( 'Started server and listening on port ' + port );
 });
