@@ -1,4 +1,6 @@
-var crypto = require( 'crypto' );
+var crypto      = require( 'crypto' );
+
+const { FB_APP_SECRET } = require( './fb-params' );
 
 module.exports = (function() {
     

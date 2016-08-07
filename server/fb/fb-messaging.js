@@ -1,6 +1,7 @@
-// generic function sending messages
 var request = require( 'request' );
 var fetch   = require( 'node-fetch' );
+
+const { FB_PAGE_TOKEN } = require( './fb-params' );
 
 module.exports = (function() {
     function sendMessage(recipientId, message) {
