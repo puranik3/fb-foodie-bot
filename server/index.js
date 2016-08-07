@@ -55,12 +55,12 @@ app.post('/webhook', (req, res) => {
         console.log( 'page...' );
         data.entry.forEach(entry => {
             entry.messaging.forEach(event => {
-                // We retrieve the Facebook user ID of the sender
-                var sender = event.sender.id;
                 if (event.message) {
                     console.log( 'step 1...' );
                     // We retrieve the user's current session, or create one if it doesn't exist
                     // This is needed for our bot to figure out the conversation history
+                    // We retrieve the Facebook user ID of the sender
+                    var sender = event.sender.id;
                     /*
                     const sessionId = findOrCreateSession(sender);
                     sessions[sessionId].context.coords = {
