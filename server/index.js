@@ -36,7 +36,7 @@ app.get('/', function (req, res) {
 // For webhook verification by FB
 app.get('/webhook', function (req, res) {
     //if (req.query['hub.mode'] === 'subscribe') {
-        if (req.query['hub.verify_token'] === 'foodie_app_by_krishna_and_friends') {
+        if (req.query['hub.verify_token'] === '32abdea7c4d6d2767b879838841debd9') {
           res.send(req.query['hub.challenge']);
         } else {
           res.send('Error, wrong validation token');    
@@ -46,6 +46,7 @@ app.get('/webhook', function (req, res) {
 
 // Message handler
 app.post('/webhook', (req, res) => {
+    console.log( 'post /webhook' );
     // Parse the Messenger payload
     // See the Webhook reference
     // https://developers.facebook.com/docs/messenger-platform/webhook-reference
